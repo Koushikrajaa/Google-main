@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="google-signin-client_id"
+            content="713358105448-bofg917kj03h42rticf6l2d0fmmotbmj.apps.googleusercontent.com">
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <title>Login</title>
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #title{
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            }
+            #a{
+                display: flex;
+                flex-direction: column;
+            }
+            #data{
+                display: none;
+            }
+            .g-signin2{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
+            .btn{
+                background-color: red;
+                color: white;
+                border: 1px solid red;
+                cursor: pointer;
+            }
+    </style>
+    </head>
+    <body>
+        <div id="a">
+            <h1 id="title">Login with Google</h1>
+            <div class="g-signin2" id="goo-btn" data-onsuccess="onSignIn">></div>
+
+            <div id="data">
+                <h3 id="welcome">Login Success !</h3>
+                <button type="button" class="btn" onclick="signOut()">Sign Out</button>
+            </div>
+        </div>
+
+    </body>
+    <script>
+        function onSignIn(googleUser) {
+        var data = document.getElementById("data")
+        var btn = document.getElementById("goo-btn")
+        data.style.display="block"
+        btn.style.display="none"
+        }
+
+        function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+       alert("Signed out")
+        var data = document.getElementById("data1")
+        var btn = document.getElementById("goo-btn")
+        data.style.display="none"
+        btn.style.display="block"
+        });
+    }
+
+    </script>
+</html>
